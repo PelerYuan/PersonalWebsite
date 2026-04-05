@@ -1,5 +1,77 @@
 // src/data/projects.js
 
+export const FEATURED_PROJECTS = [
+  {
+    id: 'quiz-system',
+    title: 'Full-Stack Exam Management System',
+    bullets: [
+      'Architected a web-based platform using React, Express.js, and MongoDB',
+      'Implemented exam creation, editing, and management for instructors',
+      'Developed analytics and tracking to monitor individual student performance',
+      'Designed feedback mechanisms enabling instructors to respond to students',
+      'Coordinated a small development team, managing task distribution',
+      'Deployed and maintained for practical use in real classroom environments',
+    ],
+    tags: ['React', 'Express.js', 'MongoDB', 'Full-Stack'],
+    accentColor: '#7c3aed',
+    links: {
+      github: 'https://github.com/PelerYuan/QuizSystemV2',
+      demo: 'https://quiz.peler.top',
+    },
+    image: 'quiz',
+    imageAlt: 'Exam Management System screenshot',
+    carousel: null,
+  },
+  {
+    id: 'haocikuaiji',
+    title: 'HaoCiKuaiJi — Vocabulary Learning System',
+    bullets: [
+      'Architected a Python application with MVC-style separation',
+      'Implemented vocabulary management and learning workflows',
+      'Designed system structure for extensibility and maintainability',
+      'Built an Arduino companion device to enhance learning interaction',
+      'Explored software-hardware integration for educational applications',
+      'Documented system design and implementation for future extension',
+    ],
+    tags: ['Python', 'Arduino', 'Software Architecture', 'Embedded Systems'],
+    accentColor: '#00ff88',
+    links: {
+      github: 'https://github.com/PelerYuan/HaoCiKuaiJi',
+      docs: 'https://page.peler.top/HaoCiKuaiJi',
+    },
+    image: 'haocikuaiji',
+    imageAlt: 'HaoCiKuaiJi vocabulary learning system screenshot',
+    carousel: null,
+  },
+  {
+    id: 'pelergame',
+    title: 'PelerGame — Modular 2D Game',
+    bullets: [
+      'Built core systems: player interaction, combat, and UI',
+      'Structured a modular architecture (map, GUI, objects, screens, data)',
+      'Enabled highly customizable configuration (e.g., maps, weapons, bullets)',
+      'Wrote and maintained documentation for developers and players',
+      'Packaged and released publicly as a distributable open-source game',
+    ],
+    tags: ['Python', 'Game Development', 'Hackathon', 'Award-winning'],
+    accentColor: '#f59e0b',
+    links: {
+      github: 'https://github.com/PelerYuan/PelerGame',
+      website: 'https://peler.top/html/PelerGame/',
+    },
+    image: 'pelergame',
+    imageAlt: 'PelerGame screenshots',
+    carousel: [
+      { file: '1',  caption: 'Splash Screen' },
+      { file: '3',  caption: 'Gameplay Overview' },
+      { file: '7',  caption: 'Fight With Enemies' },
+      { file: '8',  caption: 'Skill Activation' },
+      { file: '12', caption: 'Shop Interaction' },
+      { file: '17', caption: 'Weapon System' },
+    ],
+  },
+];
+
 export const SOFTWARE_PROJECTS = [
   {
     id: 'nexus-gateway',
