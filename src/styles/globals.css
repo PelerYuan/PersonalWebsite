@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --accent: #00d4ff;
+    --accent-glow: #00d4ff4d;
+    --bg-base: #0a0a0f;
+    scroll-behavior: auto;
+  }
+
+  html {
+    background-color: var(--bg-base);
+    color: #e8e8f0;
+    font-family: 'Inter', system-ui, sans-serif;
+    height: 100%;
+  }
+
+  body {
+    height: 100%;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: #00d4ff33;
+    color: #00d4ff;
+  }
+
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0a0a0f;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #00d4ff33;
+    border-radius: 2px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #00d4ff66;
+  }
+}
+
+@layer utilities {
+  .glass {
+    background: rgba(13, 13, 20, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  }
+
+  .text-glow {
+    text-shadow: 0 0 20px #00d4ff80, 0 0 40px #00d4ff33;
+  }
+
+  .section-bg {
+    background-color: #0a0a0f;
+    background-image:
+      radial-gradient(circle, #1e1e2e 1px, transparent 1px),
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 212, 255, 0.012) 2px,
+        rgba(0, 212, 255, 0.012) 4px
+      );
+    background-size: 28px 28px, 100% 100%;
+  }
+
+  .label-mono {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #00d4ff;
+    opacity: 0.7;
+  }
+
+  .terminal-green {
+    color: #00ff88;
+  }
+
+  /* Shimmer wave for skill progress bars */
+  @keyframes shimmer {
+    0%   { transform: translateX(-100%); }
+    100% { transform: translateX(200%); }
+  }
+  .shimmer {
+    animation: shimmer 1.6s linear infinite;
+  }
+}
+
+@layer components {
+  .section-wrapper {
+    @apply relative w-full max-w-6xl mx-auto px-6 py-24 lg:py-32;
+  }
+
+  .section-heading {
+    @apply font-mono text-3xl md:text-4xl font-bold text-text-primary mb-2;
+  }
+
+  .section-label {
+    @apply mb-8 flex items-center gap-3;
+    color: #00d4ff;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 2rem;
+    height: 1px;
+    background: #00d4ff;
+    flex-shrink: 0;
+  }
+}
