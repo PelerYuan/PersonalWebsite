@@ -1,30 +1,41 @@
 // src/components/sections/SoftwareArchitect.jsx
-import { motion } from 'framer-motion';
-import { ExternalLink, BookOpen } from 'lucide-react';
-import ScrollReveal, { REVEAL_VARIANTS } from '../ui/ScrollReveal';
-import SectionCard from '../ui/SectionCard';
-import ImageCarousel from '../ui/ImageCarousel';
-import { SOFTWARE_PROJECTS, FEATURED_PROJECTS } from '../../data/projects';
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { ExternalLink, BookOpen, Image as ImageIcon } from "lucide-react";
+import ScrollReveal, { REVEAL_VARIANTS } from "../ui/ScrollReveal";
+import SectionCard from "../ui/SectionCard";
+import ImageCarousel from "../ui/ImageCarousel";
+import ImageLightbox from "../ui/ImageLightbox";
+import { INNOVATION_PROJECTS, FEATURED_PROJECTS } from "../../data/projects";
 
 // Static asset imports — Vite requires static import paths
-import quizImg from '../../assets/projects/quiz.png';
-import haociImg from '../../assets/projects/haocikuaiji.png';
-import pg1 from '../../assets/projects/pelergame/1.png';
-import pg3 from '../../assets/projects/pelergame/3.png';
-import pg7 from '../../assets/projects/pelergame/7.png';
-import pg8 from '../../assets/projects/pelergame/8.png';
-import pg12 from '../../assets/projects/pelergame/12.png';
-import pg17 from '../../assets/projects/pelergame/17.png';
+import quizImg from "../../assets/projects/quiz.png";
+import haociImg from "../../assets/projects/haocikuaiji.png";
+import waterImg from "../../assets/projects/water.jpg";
+import exampleImg from "../../assets/projects/example.jpg";
+import linguistableImg from "../../assets/projects/linguistable.png";
+import pg1 from "../../assets/projects/pelergame/1.png";
+import pg3 from "../../assets/projects/pelergame/3.png";
+import pg7 from "../../assets/projects/pelergame/7.png";
+import pg8 from "../../assets/projects/pelergame/8.png";
+import pg12 from "../../assets/projects/pelergame/12.png";
+import pg17 from "../../assets/projects/pelergame/17.png";
 
 const IMAGE_MAP = { quiz: quizImg, haocikuaiji: haociImg };
 
+const INNOVATION_IMAGE_MAP = {
+  water: waterImg,
+  example: exampleImg,
+  linguistable: linguistableImg,
+};
+
 const PELERGAME_SLIDES = [
-  { src: pg1,  caption: 'Splash Screen' },
-  { src: pg3,  caption: 'Gameplay Overview' },
-  { src: pg7,  caption: 'Fight With Enemies' },
-  { src: pg8,  caption: 'Skill Activation' },
-  { src: pg12, caption: 'Shop Interaction' },
-  { src: pg17, caption: 'Weapon System' },
+  { src: pg1, caption: "Splash Screen" },
+  { src: pg3, caption: "Gameplay Overview" },
+  { src: pg7, caption: "Fight With Enemies" },
+  { src: pg8, caption: "Skill Activation" },
+  { src: pg12, caption: "Shop Interaction" },
+  { src: pg17, caption: "Weapon System" },
 ];
 
 function GithubIcon({ size = 15 }) {
@@ -53,7 +64,7 @@ function SectionHeader({ label, title, description }) {
 }
 
 function ProjectImage({ project }) {
-  if (project.carousel && project.image === 'pelergame') {
+  if (project.carousel && project.image === "pelergame") {
     return <ImageCarousel slides={PELERGAME_SLIDES} />;
   }
   if (project.image && IMAGE_MAP[project.image]) {
@@ -71,28 +82,32 @@ function ProjectImage({ project }) {
   return (
     <div
       className="glass rounded-xl flex flex-col items-center justify-center gap-3"
-      style={{ height: '260px', border: '1px dashed rgba(255,255,255,0.1)' }}
+      style={{ height: "260px", border: "1px dashed rgba(255,255,255,0.1)" }}
     >
-      <span style={{ fontSize: '2rem' }}>📸</span>
-      <span className="label-mono" style={{ opacity: 0.5 }}>Image coming soon</span>
+      <span style={{ fontSize: "2rem" }}>📸</span>
+      <span className="label-mono" style={{ opacity: 0.5 }}>
+        Image coming soon
+      </span>
     </div>
   );
 }
 
 function FeaturedProjectRow({ project, index }) {
   const isOdd = index % 2 === 1;
-  const revealVariant = isOdd ? 'right' : 'left';
+  const revealVariant = isOdd ? "right" : "left";
 
   return (
     <ScrollReveal variant={revealVariant}>
-      <div className={`grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mb-20`}>
+      <div
+        className={`grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mb-20`}
+      >
         {/* Image column — swapped on odd rows via order */}
-        <div className={isOdd ? 'lg:order-2' : ''}>
+        <div className={isOdd ? "lg:order-2" : ""}>
           <ProjectImage project={project} />
         </div>
 
         {/* Text column */}
-        <div className={isOdd ? 'lg:order-1' : ''}>
+        <div className={isOdd ? "lg:order-1" : ""}>
           {/* Title */}
           <h3
             className="font-mono font-bold text-xl text-text-primary mb-4 leading-snug"
@@ -104,8 +119,19 @@ function FeaturedProjectRow({ project, index }) {
           {/* Bullets */}
           <ul className="space-y-2 mb-5">
             {project.bullets.map((b, i) => (
-              <li key={i} className="flex items-start gap-2 text-sm text-text-secondary leading-relaxed">
-                <span style={{ color: project.accentColor, flexShrink: 0, marginTop: '0.1rem' }}>•</span>
+              <li
+                key={i}
+                className="flex items-start gap-2 text-sm text-text-secondary leading-relaxed"
+              >
+                <span
+                  style={{
+                    color: project.accentColor,
+                    flexShrink: 0,
+                    marginTop: "0.1rem",
+                  }}
+                >
+                  •
+                </span>
                 <span>{b}</span>
               </li>
             ))}
@@ -141,8 +167,14 @@ function FeaturedProjectRow({ project, index }) {
                   border: `1px solid ${project.accentColor}50`,
                   background: `${project.accentColor}10`,
                 }}
-                onMouseEnter={e => { e.currentTarget.style.background = `${project.accentColor}25`; e.currentTarget.style.boxShadow = `0 0 12px ${project.accentColor}30`; }}
-                onMouseLeave={e => { e.currentTarget.style.background = `${project.accentColor}10`; e.currentTarget.style.boxShadow = 'none'; }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = `${project.accentColor}25`;
+                  e.currentTarget.style.boxShadow = `0 0 12px ${project.accentColor}30`;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = `${project.accentColor}10`;
+                  e.currentTarget.style.boxShadow = "none";
+                }}
               >
                 <GithubIcon size={13} />
                 GitHub
@@ -159,8 +191,14 @@ function FeaturedProjectRow({ project, index }) {
                   border: `1px solid ${project.accentColor}50`,
                   background: `${project.accentColor}10`,
                 }}
-                onMouseEnter={e => { e.currentTarget.style.background = `${project.accentColor}25`; e.currentTarget.style.boxShadow = `0 0 12px ${project.accentColor}30`; }}
-                onMouseLeave={e => { e.currentTarget.style.background = `${project.accentColor}10`; e.currentTarget.style.boxShadow = 'none'; }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = `${project.accentColor}25`;
+                  e.currentTarget.style.boxShadow = `0 0 12px ${project.accentColor}30`;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = `${project.accentColor}10`;
+                  e.currentTarget.style.boxShadow = "none";
+                }}
               >
                 <ExternalLink size={13} />
                 Live Demo
@@ -177,8 +215,14 @@ function FeaturedProjectRow({ project, index }) {
                   border: `1px solid ${project.accentColor}50`,
                   background: `${project.accentColor}10`,
                 }}
-                onMouseEnter={e => { e.currentTarget.style.background = `${project.accentColor}25`; e.currentTarget.style.boxShadow = `0 0 12px ${project.accentColor}30`; }}
-                onMouseLeave={e => { e.currentTarget.style.background = `${project.accentColor}10`; e.currentTarget.style.boxShadow = 'none'; }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = `${project.accentColor}25`;
+                  e.currentTarget.style.boxShadow = `0 0 12px ${project.accentColor}30`;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = `${project.accentColor}10`;
+                  e.currentTarget.style.boxShadow = "none";
+                }}
               >
                 <ExternalLink size={13} />
                 Website
@@ -195,8 +239,14 @@ function FeaturedProjectRow({ project, index }) {
                   border: `1px solid ${project.accentColor}50`,
                   background: `${project.accentColor}10`,
                 }}
-                onMouseEnter={e => { e.currentTarget.style.background = `${project.accentColor}25`; e.currentTarget.style.boxShadow = `0 0 12px ${project.accentColor}30`; }}
-                onMouseLeave={e => { e.currentTarget.style.background = `${project.accentColor}10`; e.currentTarget.style.boxShadow = 'none'; }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = `${project.accentColor}25`;
+                  e.currentTarget.style.boxShadow = `0 0 12px ${project.accentColor}30`;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = `${project.accentColor}10`;
+                  e.currentTarget.style.boxShadow = "none";
+                }}
               >
                 <BookOpen size={13} />
                 Docs
@@ -209,21 +259,21 @@ function FeaturedProjectRow({ project, index }) {
   );
 }
 
-function ProjectCard({ project }) {
+function InnovationProjectCard({ project }) {
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const resolvedImages = project.images
+    ? project.images.map((key) => INNOVATION_IMAGE_MAP[key])
+    : null;
+
   return (
-    <SectionCard glowColor={project.accentColor} className="flex flex-col h-full">
+    <SectionCard
+      glowColor={project.accentColor}
+      className="flex flex-col h-full"
+    >
       <div className="flex items-start justify-between gap-4 mb-3">
-        <div>
-          <span
-            className="label-mono mb-1 block"
-            style={{ color: project.accentColor, opacity: 0.8 }}
-          >
-            {project.status}
-          </span>
-          <h3 className="font-mono font-semibold text-text-primary text-base">
-            {project.title}
-          </h3>
-        </div>
+        <h3 className="font-mono font-semibold text-text-primary text-base">
+          {project.title}
+        </h3>
         <div className="flex gap-2 shrink-0">
           {project.links.github && (
             <a
@@ -236,16 +286,14 @@ function ProjectCard({ project }) {
               <GithubIcon size={15} />
             </a>
           )}
-          {project.links.demo && (
-            <a
-              href={project.links.demo}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Live demo"
+          {resolvedImages && (
+            <button
+              onClick={() => setLightboxOpen(true)}
+              aria-label="View images"
               className="p-1.5 text-text-muted hover:text-text-primary transition-colors rounded"
             >
-              <ExternalLink size={15} />
-            </a>
+              <ImageIcon size={15} />
+            </button>
           )}
         </div>
       </div>
@@ -258,24 +306,45 @@ function ProjectCard({ project }) {
         {project.tags.map((tag) => (
           <span
             key={tag}
-            className="px-2 py-0.5 rounded text-[10px] font-mono bg-base-muted text-text-muted border border-base-border"
+            className="px-2 py-0.5 rounded text-[10px] font-mono font-medium"
+            style={{
+              color: project.accentColor,
+              background: `${project.accentColor}18`,
+              border: `1px solid ${project.accentColor}50`,
+            }}
           >
             {tag}
           </span>
         ))}
       </div>
+
+      {lightboxOpen && resolvedImages && (
+        <ImageLightbox
+          images={resolvedImages}
+          onClose={() => setLightboxOpen(false)}
+        />
+      )}
     </SectionCard>
   );
 }
 
 export default function SoftwareArchitect() {
   return (
-    <section id="software" className="section-bg border-t border-base-border/30">
+    <section
+      id="software"
+      className="section-bg border-t border-base-border/30"
+    >
       <div className="section-wrapper">
         <SectionHeader
           label="02 — Software"
           title="Software Architecture"
-          description="Systems designed to scale, APIs built to last, and tooling that makes teams faster. Clean abstractions over clever hacks."
+          description={
+            <>
+              End-to-end systems, thoughtful architecture, collaborative development,
+              <br />
+              and ideas that drive real impact.
+            </>
+          }
         />
 
         {/* Featured Projects */}
@@ -294,17 +363,24 @@ export default function SoftwareArchitect() {
         {/* Divider before card grid */}
         <div className="border-t border-base-border/30 mb-16" />
 
+        {/* Innovation Lab sub-section label */}
+        <ScrollReveal variant="up">
+          <div className="mb-4">
+            <span className="label-mono">— Innovation Lab</span>
+          </div>
+        </ScrollReveal>
+
         {/* Existing project cards */}
         <motion.div
           variants={REVEAL_VARIANTS.stagger}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: '-80px' }}
+          viewport={{ once: true, margin: "-80px" }}
           className="grid grid-cols-1 md:grid-cols-2 gap-6"
         >
-          {SOFTWARE_PROJECTS.map((project) => (
+          {INNOVATION_PROJECTS.map((project) => (
             <motion.div key={project.id} variants={REVEAL_VARIANTS.scale}>
-              <ProjectCard project={project} />
+              <InnovationProjectCard project={project} />
             </motion.div>
           ))}
         </motion.div>
