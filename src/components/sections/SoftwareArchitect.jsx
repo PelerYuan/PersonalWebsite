@@ -201,7 +201,7 @@ function FeaturedProjectRow({ project, index }) {
                 }}
               >
                 <ExternalLink size={13} />
-                Live Demo
+                Live Demo (Admin Password: 123456)
               </a>
             )}
             {project.links.website && (
