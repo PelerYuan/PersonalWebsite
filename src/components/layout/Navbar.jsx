@@ -12,7 +12,6 @@ const NAV_ITEMS = [
   { id: 'hardware', label: 'Hardware' },
   { id: 'server-ops', label: 'Ops' },
   { id: 'writing', label: 'Writing' },
-  { id: 'photography', label: 'Photography' },
   { id: 'contact', label: 'Contact' },
 ];
 
@@ -52,7 +51,7 @@ export default function Navbar() {
           aria-label="Back to top"
         >
           <span className="font-mono text-accent-DEFAULT text-glow font-bold tracking-widest text-sm select-none">
-            XY<span className="text-text-muted">.dev</span>
+            page.<span className="text-text-primary">peler</span><span className="text-text-muted">.top</span>
           </span>
         </button>
 

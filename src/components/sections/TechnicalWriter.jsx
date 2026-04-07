@@ -17,7 +17,7 @@ function SectionHeader({ label, title, description }) {
             {description}
           </p>
         )}
-        <div className="mt-6 w-16 h-0.5 bg-gradient-to-r from-[#f472b6] to-transparent rounded" />
+        <div className="mt-6 w-16 h-0.5 bg-gradient-to-r from-accent-DEFAULT to-transparent rounded" />
       </div>
     </ScrollReveal>
   );
@@ -66,7 +66,7 @@ export default function TechnicalWriter() {
                   </h3>
                   <span
                     className="px-2.5 py-1 rounded-lg font-mono font-bold text-xs tracking-wide"
-                    style={{ background: '#7c3aed', color: '#fff' }}
+                    style={{ background: '#a78bfa', color: '#fff' }}
                   >
                     V3
                   </span>

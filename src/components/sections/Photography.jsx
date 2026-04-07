@@ -9,13 +9,13 @@ const CATEGORIES = ['All', 'Street', 'Architecture', 'Night', 'Nature'];
 // Placeholder photo data with color-coded placeholders
 const PHOTOS = [
   { id: 'p1', category: 'Street', title: 'Rush Hour', location: 'Downtown', color: '#1a1a2e', accent: '#00d4ff' },
-  { id: 'p2', category: 'Architecture', title: 'Glass & Steel', location: 'Financial District', color: '#16213e', accent: '#7c3aed' },
+  { id: 'p2', category: 'Architecture', title: 'Glass & Steel', location: 'Financial District', color: '#16213e', accent: '#a78bfa' },
   { id: 'p3', category: 'Night', title: 'Light Trails', location: 'Overpass', color: '#0f1040', accent: '#f59e0b', tall: true },
   { id: 'p4', category: 'Street', title: 'Quiet Alley', location: 'Old Quarter', color: '#1a1228', accent: '#f472b6' },
   { id: 'p5', category: 'Architecture', title: 'Brutalist Facade', location: 'City Hall', color: '#111827', accent: '#00ff88', wide: true },
   { id: 'p6', category: 'Nature', title: 'Fog Valley', location: 'Mountain Pass', color: '#0d1b2a', accent: '#fb923c' },
   { id: 'p7', category: 'Night', title: 'Star Trails', location: 'Remote Desert', color: '#05050f', accent: '#00d4ff', tall: true },
-  { id: 'p8', category: 'Street', title: 'Wet Reflections', location: 'After Rain', color: '#0a1520', accent: '#7c3aed' },
+  { id: 'p8', category: 'Street', title: 'Wet Reflections', location: 'After Rain', color: '#0a1520', accent: '#a78bfa' },
   { id: 'p9', category: 'Architecture', title: 'Spiral Staircase', location: 'Museum', color: '#1c1020', accent: '#f472b6' },
   { id: 'p10', category: 'Nature', title: 'Morning Mist', location: 'Lake Shore', color: '#051015', accent: '#00ff88', wide: true },
   { id: 'p11', category: 'Night', title: 'City Glow', location: 'Rooftop', color: '#0a0510', accent: '#f59e0b' },

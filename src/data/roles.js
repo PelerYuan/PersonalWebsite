@@ -19,7 +19,7 @@ export const ROLES = [
       "Designing scalable systems with clean abstractions — from microservice topologies to developer tooling and APIs that teams actually love to use.",
     sectionId: 'software',
     sectionLabel: 'View Projects',
-    accentColor: '#7c3aed',
+    accentColor: '#a78bfa',
   },
   {
     id: 'hardware-engineer',
@@ -47,14 +47,5 @@ export const ROLES = [
     sectionId: 'writing',
     sectionLabel: 'Read Articles',
     accentColor: '#f472b6',
-  },
-  {
-    id: 'photographer',
-    label: "Photographer",
-    description:
-      "Capturing moments between frames — street scenes, architectural geometry, and long-exposure night shots with a deliberate, quiet compositional eye.",
-    sectionId: 'photography',
-    sectionLabel: 'View Gallery',
-    accentColor: '#fb923c',
   },
 ];

@@ -57,7 +57,7 @@ function SectionHeader({ label, title, description }) {
             {description}
           </p>
         )}
-        <div className="mt-6 w-16 h-0.5 bg-gradient-to-r from-[#7c3aed] to-transparent rounded" />
+
       </div>
     </ScrollReveal>
   );
@@ -114,6 +114,9 @@ function FeaturedProjectRow({ project, index }) {
             style={{ textShadow: `0 0 20px ${project.accentColor}40` }}
           >
             {project.title}
+            {project.subtitle && (
+              <span className="block text-sm font-normal opacity-60 mt-0.5">{project.subtitle}</span>
+            )}
           </h3>
 
           {/* Bullets */}
@@ -350,7 +353,7 @@ export default function SoftwareArchitect() {
         {/* Featured Projects */}
         <ScrollReveal variant="up">
           <div className="mb-4">
-            <span className="label-mono">— Featured Projects</span>
+            <span className="label-mono" style={{ color: '#a78bfa' }}>— Featured Projects</span>
           </div>
         </ScrollReveal>
 
@@ -366,7 +369,7 @@ export default function SoftwareArchitect() {
         {/* Innovation Lab sub-section label */}
         <ScrollReveal variant="up">
           <div className="mb-4">
-            <span className="label-mono">— Innovation Lab</span>
+            <span className="label-mono" style={{ color: '#a78bfa' }}>— Innovation Lab</span>
           </div>
         </ScrollReveal>
 

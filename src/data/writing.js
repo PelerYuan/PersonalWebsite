@@ -9,7 +9,7 @@ export const ARTICLES = [
     tags: ['Go', 'gRPC', 'Backend'],
     date: '2025-11-14',
     readTime: '12 min',
-    accentColor: '#7c3aed',
+    accentColor: '#a78bfa',
   },
   {
     id: 'pcb-signal-integrity',

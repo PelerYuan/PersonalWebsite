@@ -13,7 +13,7 @@ export const FEATURED_PROJECTS = [
       'Deployed and maintained for practical use in real classroom environments',
     ],
     tags: ['React', 'Express.js', 'MongoDB', 'Full-Stack'],
-    accentColor: '#7c3aed',
+    accentColor: '#a78bfa',
     links: {
       github: 'https://github.com/PelerYuan/QuizSystemV2',
       demo: 'https://quiz.peler.top',
@@ -46,6 +46,7 @@ export const FEATURED_PROJECTS = [
   {
     id: 'pelergame',
     title: 'PelerGame — Modular 2D Game',
+    subtitle: 'Built during a Hackathon',
     bullets: [
       'Built core systems: player interaction, combat, and UI',
       'Structured a modular architecture (map, GUI, objects, screens, data)',
@@ -89,7 +90,7 @@ export const INNOVATION_PROJECTS = [
     description:
       'An intelligent batch watermarking tool that automatically adapts watermark styles based on image regions to ensure visibility and clarity.',
     tags: ['Python', 'Computer Vision', 'Image Processing'],
-    accentColor: '#7c3aed',
+    accentColor: '#a78bfa',
     links: {},
     images: ['water', 'example'],
   },

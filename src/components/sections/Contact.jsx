@@ -1,9 +1,7 @@
 // src/components/sections/Contact.jsx
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Mail, Send, CheckCircle, X } from 'lucide-react';
-import ScrollReveal, { REVEAL_VARIANTS } from '../ui/ScrollReveal';
-import GlowButton from '../ui/GlowButton';
+import { motion } from "framer-motion";
+import { Mail } from "lucide-react";
+import ScrollReveal, { REVEAL_VARIANTS } from "../ui/ScrollReveal";
 
 function GithubIcon({ size = 18 }) {
   return (
@@ -13,27 +11,35 @@ function GithubIcon({ size = 18 }) {
   );
 }
 
+function LinkedInIcon({ size = 18 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+    </svg>
+  );
+}
+
 const SOCIAL = [
   {
-    label: 'GitHub',
-    handle: '@xingjian-yuan',
-    href: 'https://github.com/',
+    label: "GitHub",
+    handle: "@PelerYuan",
+    href: "https://github.com/PelerYuan",
     icon: GithubIcon,
-    color: '#e8e8f0',
+    color: "#e8e8f0",
   },
   {
-    label: 'Email',
-    handle: 'xingjian@example.com',
-    href: 'mailto:xingjian@example.com',
+    label: "Email",
+    handle: "xingjian.yuan@student.uq.edu.au",
+    href: "mailto:xingjian.yuan@student.uq.edu.au",
     icon: Mail,
-    color: '#00d4ff',
+    color: "#00d4ff",
   },
   {
-    label: 'X / Twitter',
-    handle: '@xingjian_y',
-    href: 'https://x.com/',
-    icon: X,
-    color: '#1d9bf0',
+    label: "LinkedIn",
+    handle: "xingjian-yuan",
+    href: "https://www.linkedin.com/in/xingjian-yuan-914732400/",
+    icon: LinkedInIcon,
+    color: "#0a66c2",
   },
 ];
 
@@ -55,132 +61,71 @@ function SectionHeader({ label, title, description }) {
 }
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
-  const [sent, setSent] = useState(false);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Placeholder — wire up to your preferred form endpoint
-    setSent(true);
-    setTimeout(() => setSent(false), 4000);
-    setForm({ name: '', email: '', message: '' });
-  };
-
-  const inputClass =
-    'w-full bg-base-elevated border border-base-border rounded-lg px-4 py-3 text-sm text-text-primary font-mono placeholder-text-muted focus:outline-none focus:border-accent-DEFAULT/60 transition-colors';
-
   return (
     <section id="contact" className="section-bg border-t border-base-border/30">
       <div className="section-wrapper">
         <SectionHeader
           label="07 — Contact"
           title="Get in Touch"
-          description="Have a project in mind, a question about my work, or just want to connect? I read every message."
+          description={
+            <>
+              Have a project in mind, a question about my work, or just want to
+              connect?
+              <br />I read every message.
+            </>
+          }
         />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          {/* Social links */}
-          <ScrollReveal variant="left">
-            <h3 className="font-mono text-base font-semibold text-text-primary mb-6">
-              Find me online
-            </h3>
-            <motion.div
-              variants={REVEAL_VARIANTS.stagger}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="space-y-4"
-            >
-              {SOCIAL.map(({ label, handle, href, icon: Icon, color }) => (
-                <motion.a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  variants={REVEAL_VARIANTS.left}
-                  whileHover={{ x: 6 }}
-                  className="flex items-center gap-4 p-4 glass rounded-xl border border-base-border hover:border-white/10 transition-colors group"
+        <ScrollReveal variant="left">
+          <h3 className="font-mono text-base font-semibold text-text-primary mb-6">
+            Find me online
+          </h3>
+          <motion.div
+            variants={REVEAL_VARIANTS.stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="space-y-4"
+          >
+            {SOCIAL.map(({ label, handle, href, icon: Icon, color }) => (
+              <motion.a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                variants={REVEAL_VARIANTS.left}
+                whileHover={{ x: 6 }}
+                className="flex items-center gap-4 p-4 glass rounded-xl border border-base-border hover:border-white/10 transition-colors group"
+              >
+                <div
+                  className="p-2.5 rounded-lg shrink-0"
+                  style={{
+                    background: `${color}15`,
+                    border: `1px solid ${color}30`,
+                  }}
                 >
-                  <div
-                    className="p-2.5 rounded-lg shrink-0"
-                    style={{ background: `${color}15`, border: `1px solid ${color}30` }}
-                  >
-                    <Icon size={18} style={{ color }} />
-                  </div>
-                  <div>
-                    <p className="text-text-primary font-mono text-sm font-medium">{label}</p>
-                    <p className="text-text-muted text-xs font-mono">{handle}</p>
-                  </div>
-                </motion.a>
-              ))}
-            </motion.div>
+                  <Icon size={18} style={{ color }} />
+                </div>
+                <div>
+                  <p className="text-text-primary font-mono text-sm font-medium">
+                    {label}
+                  </p>
+                  <p className="text-text-muted text-xs font-mono">{handle}</p>
+                </div>
+              </motion.a>
+            ))}
+          </motion.div>
 
-            <div className="mt-10 p-5 glass rounded-xl border border-accent-glow">
-              <p className="text-text-secondary text-sm leading-relaxed">
-                <span className="text-accent-DEFAULT font-mono">Open to opportunities</span> — internships,
-                research collaborations, and interesting side projects. Response time: typically within 48 hours.
-              </p>
-            </div>
-          </ScrollReveal>
-
-          {/* Contact form */}
-          <ScrollReveal variant="right">
-            <h3 className="font-mono text-base font-semibold text-text-primary mb-6">
-              Send a message
-            </h3>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <label className="label-mono block mb-1.5">Name</label>
-                <input
-                  type="text"
-                  required
-                  value={form.name}
-                  onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
-                  placeholder="Your name"
-                  className={inputClass}
-                />
-              </div>
-
-              <div>
-                <label className="label-mono block mb-1.5">Email</label>
-                <input
-                  type="email"
-                  required
-                  value={form.email}
-                  onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
-                  placeholder="your@email.com"
-                  className={inputClass}
-                />
-              </div>
-
-              <div>
-                <label className="label-mono block mb-1.5">Message</label>
-                <textarea
-                  required
-                  rows={5}
-                  value={form.message}
-                  onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
-                  placeholder="What's on your mind?"
-                  className={`${inputClass} resize-none`}
-                />
-              </div>
-
-              <GlowButton type="submit" filled className="w-full justify-center">
-                {sent ? (
-                  <>
-                    <CheckCircle size={16} />
-                    Sent!
-                  </>
-                ) : (
-                  <>
-                    <Send size={16} />
-                    Send Message
-                  </>
-                )}
-              </GlowButton>
-            </form>
-          </ScrollReveal>
-        </div>
+          <div className="mt-10 p-5 glass rounded-xl border border-accent-glow">
+            <p className="text-text-secondary text-sm leading-relaxed">
+              <span className="text-accent-DEFAULT font-mono">
+                Open to opportunities
+              </span>{" "}
+              — internships, research collaborations, and interesting side
+              projects. Response time: typically within 48 hours.
+            </p>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );

@@ -23,7 +23,7 @@ const VIDEO_GROUPS = [
     label: '[10K+ Views] Early Builds & Tutorials',
     videos: [
       { title: 'Python - Arduino Communication',             thumb: '/4.png', url: 'https://www.bilibili.com/video/BV1at4y187yf', color: '#00d4ff' },
-      { title: 'Arduino Bluetooth Programming',              thumb: '/5.png', url: 'https://www.bilibili.com/video/BV1Se4y1Q7ZP', color: '#7c3aed' },
+      { title: 'Arduino Bluetooth Programming',              thumb: '/5.png', url: 'https://www.bilibili.com/video/BV1Se4y1Q7ZP', color: '#a78bfa' },
       { title: 'Ultrasonic Radar with Arduino (C++ & Java)', thumb: '/6.png', url: 'https://www.bilibili.com/video/BV1G94y1R7J3', color: '#00ff88' },
     ],
   },
@@ -32,12 +32,12 @@ const VIDEO_GROUPS = [
     videos: [
       { title: 'High-Voltage Bug Zapper Boost Circuit',  thumb: '/1.png', url: 'https://www.bilibili.com/video/BV1nY411X7Au', color: '#f472b6' },
       { title: 'First Bluetooth-Controlled Arduino Car', thumb: '/2.png', url: 'https://www.bilibili.com/video/BV1W34y1p7kg', color: '#f59e0b' },
-      { title: 'DIY Electromagnetic Launcher',           thumb: '/3.png', url: 'https://www.bilibili.com/video/BV16N4y157co', color: '#fb923c' },
+      { title: 'DIY Electromagnetic Launcher',           thumb: '/3.png', url: 'https://www.bilibili.com/video/BV16N4y157co', color: '#00d4ff' },
     ],
   },
 ];
 
-function VideoThumb({ title, thumb, url, color, small = false }) {
+function VideoThumb({ title, thumb, url, small = false }) {
   return (
     <div>
       <a
@@ -76,7 +76,6 @@ function VideoThumb({ title, thumb, url, color, small = false }) {
           )}
         </div>
       </a>
-      <p className="font-mono text-xs font-semibold mt-2" style={{ color }}>{title}</p>
     </div>
   );
 }
@@ -124,7 +123,7 @@ function SectionHeader({ label, title, description }) {
   return (
     <ScrollReveal variant="up">
       <div className="mb-16">
-        <div className="section-label" style={{ color: '#f59e0b' }}>
+        <div className="section-label" style={{ color: '#00d4ff' }}>
           {label}
         </div>
         <h2 className="section-heading">{title}</h2>
@@ -133,7 +132,7 @@ function SectionHeader({ label, title, description }) {
             {description}
           </p>
         )}
-        <div className="mt-6 w-16 h-0.5 bg-gradient-to-r from-[#f59e0b] to-transparent rounded" />
+        <div className="mt-6 w-16 h-0.5 bg-gradient-to-r from-accent-DEFAULT to-transparent rounded" />
       </div>
     </ScrollReveal>
   );

@@ -9,7 +9,7 @@ import { EDUCATION } from "../../data/writing";
 
 const CERTIFICATES = [
   { name: 'Full Stack Open',                org: 'University of Helsinki', url: 'https://studies.cs.helsinki.fi/stats/api/certificate/fullstackopen/en/c7a724b3469fc9fc475a168d0936a3b0', img: '/cert-fullstack.png', color: '#00d4ff' },
-  { name: 'Machine Learning Specialization', org: 'DeepLearning.AI',        url: 'https://www.coursera.org/account/accomplishments/specialization/PKT9W9Y20C2U',                              img: '/cert-ml.png',       color: '#7c3aed' },
+  { name: 'Machine Learning Specialization', org: 'DeepLearning.AI',        url: 'https://www.coursera.org/account/accomplishments/specialization/PKT9W9Y20C2U',                              img: '/cert-ml.png',       color: '#a78bfa' },
   { name: 'CS50 Python',                    org: 'Harvard X',      url: 'https://courses.edx.org/certificates/7683dc7a77914ee3829850a77a4e5770',                                    img: '/cert-cs50py.png',   color: '#00ff88' },
   { name: 'CS50 Computer Science',          org: 'Harvard X',      url: 'https://courses.edx.org/certificates/88ad15951dbe404ea2dd768ec022bbdc',                                    img: '/cert-cs50cs.png',   color: '#f472b6' },
 ];
@@ -105,7 +105,7 @@ export default function About() {
                     <SkillTag
                       label={skill.label}
                       level={skill.level}
-                      color="#7c3aed"
+                      color="#a78bfa"
                       learning={skill.learning}
                     />
                   </motion.div>
