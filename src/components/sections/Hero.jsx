@@ -4,6 +4,7 @@ import { ChevronDown } from 'lucide-react';
 import AvatarGlow from '../ui/AvatarGlow';
 import TypewriterRole from '../ui/TypewriterRole';
 import { scrollToSection } from '../../hooks/useLenis';
+import profileImg from '../../assets/profile.png';
 
 export default function Hero() {
   return (
@@ -39,7 +40,7 @@ export default function Hero() {
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
         >
-          <AvatarGlow size={160} />
+          <AvatarGlow size={160} src={profileImg} />
         </motion.div>
 
         {/* Name + subtitle */}

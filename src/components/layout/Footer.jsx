@@ -33,7 +33,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="text-center md:text-left">
             <span className="font-mono text-accent-DEFAULT text-glow font-bold tracking-widest text-sm">
-              XY<span className="text-text-muted">.dev</span>
+              dev<span className="text-text-muted">.peler.top</span>
             </span>
             <p className="text-text-muted text-xs font-mono mt-1">
               Xingjian Yuan (Peler)

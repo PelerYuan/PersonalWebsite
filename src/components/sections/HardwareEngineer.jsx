@@ -180,6 +180,37 @@ function RealWorldDeployment() {
         </div>
       </ScrollReveal>
 
+      {/* Testimonial */}
+      <ScrollReveal variant="up">
+        <div
+          className="glass rounded-xl p-5 mb-8 flex items-center gap-5"
+          style={{ border: '1px solid rgba(245,158,11,0.15)', boxShadow: '0 0 40px rgba(245,158,11,0.04)' }}
+        >
+          {/* Avatar — left side, circular */}
+          <img
+            src="/lukas.jpg"
+            alt="Lukas Z."
+            className="flex-shrink-0 rounded-full object-cover"
+            style={{ width: '88px', height: '88px', border: '2px solid rgba(245,158,11,0.35)' }}
+          />
+
+          {/* Quote text — right side */}
+          <div className="flex-1">
+            <p className="text-text-secondary text-base leading-relaxed italic">
+              "Peler dedicated his spare time to supporting the end-to-end development and debugging
+              of the experimental system.
+            </p>
+            <p className="text-text-secondary text-base leading-relaxed italic mt-2">
+              He was responsible for developing software for specific devices, and provided valuable
+              assistance during experimental procedures and data acquisition."
+            </p>
+            <p className="mt-3 font-mono text-sm font-semibold" style={{ color: '#f59e0b', textAlign: 'right', paddingRight: '3rem' }}>
+              — Lukas Z.
+            </p>
+          </div>
+        </div>
+      </ScrollReveal>
+
       {/* Learn More button */}
       <ScrollReveal variant="up">
         <div className="flex justify-start mt-2 mb-8">

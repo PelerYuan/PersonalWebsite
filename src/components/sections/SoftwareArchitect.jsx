@@ -6,7 +6,9 @@ import ScrollReveal, { REVEAL_VARIANTS } from "../ui/ScrollReveal";
 import SectionCard from "../ui/SectionCard";
 import ImageCarousel from "../ui/ImageCarousel";
 import ImageLightbox from "../ui/ImageLightbox";
-import { INNOVATION_PROJECTS, FEATURED_PROJECTS } from "../../data/projects";
+import { AI_PROJECTS, INNOVATION_PROJECTS, FEATURED_PROJECTS } from "../../data/projects";
+import mindbloomVideo from "../../assets/projects/mindbloom.mp4";
+import routerSvg from "../../assets/projects/router.svg";
 
 // Static asset imports — Vite requires static import paths
 import quizImg from "../../assets/projects/quiz.png";
@@ -331,6 +333,79 @@ function InnovationProjectCard({ project }) {
   );
 }
 
+const AI_MEDIA_MAP = {
+  mindbloom: mindbloomVideo,
+  'llm-router': routerSvg,
+};
+
+function AIProjectCard({ project }) {
+  const mediaSrc = AI_MEDIA_MAP[project.id];
+  const paragraphs = project.description ? project.description.split('\n\n') : [];
+
+  return (
+    <ScrollReveal variant="up">
+      <div
+        className="glass rounded-2xl p-6 md:p-8"
+        style={{ border: `1px solid ${project.accentColor}20` }}
+      >
+        {/* Title */}
+        <h3
+          className="font-mono font-bold text-lg text-text-primary leading-snug mb-5"
+          style={{ textShadow: `0 0 20px ${project.accentColor}40` }}
+        >
+          {project.title}
+        </h3>
+
+        {/* Description (left) + Media (right) */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mb-5">
+          {/* Description */}
+          <div>
+            {project.bullets ? (
+              <ul className="space-y-3">
+                {project.bullets.map((b, i) => (
+                  <li key={i} className="flex items-start gap-2 text-sm text-text-secondary leading-relaxed">
+                    <span style={{ color: project.accentColor, flexShrink: 0, marginTop: '0.15rem' }}>•</span>
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <div className="space-y-3">
+                {paragraphs.map((p, i) => (
+                  <p key={i} className="text-text-secondary text-sm leading-relaxed">{p}</p>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Media */}
+          {project.media === 'video' ? (
+            <div className="rounded-xl overflow-hidden" style={{ border: `1px solid ${project.accentColor}25` }}>
+              <video src={mediaSrc} autoPlay muted loop playsInline className="w-full h-auto rounded-xl" />
+            </div>
+          ) : (
+            <img src={mediaSrc} alt={project.title} className="w-full h-auto" />
+          )}
+        </div>
+
+        {/* In Developing badge */}
+        <div>
+          <span
+            className="px-2.5 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-widest"
+            style={{
+              color: project.accentColor,
+              background: `${project.accentColor}18`,
+              border: `1px solid ${project.accentColor}50`,
+            }}
+          >
+            In Developing
+          </span>
+        </div>
+      </div>
+    </ScrollReveal>
+  );
+}
+
 export default function SoftwareArchitect() {
   return (
     <section
@@ -387,6 +462,23 @@ export default function SoftwareArchitect() {
             </motion.div>
           ))}
         </motion.div>
+
+        {/* Divider before AI section */}
+        <div className="border-t border-base-border/30 mb-16 mt-16" />
+
+        {/* AI & Machine Learning sub-section label */}
+        <ScrollReveal variant="up">
+          <div className="mb-8">
+            <span className="label-mono" style={{ color: '#00d4ff' }}>— AI & Machine Learning Projects</span>
+          </div>
+        </ScrollReveal>
+
+        {/* AI project cards */}
+        <div className="flex flex-col gap-8">
+          {AI_PROJECTS.map((project) => (
+            <AIProjectCard key={project.id} project={project} />
+          ))}
+        </div>
       </div>
     </section>
   );

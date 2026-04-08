@@ -37,7 +37,7 @@ export const FEATURED_PROJECTS = [
     accentColor: '#00ff88',
     links: {
       github: 'https://github.com/PelerYuan/HaoCiKuaiJi',
-      docs: 'https://page.peler.top/HaoCiKuaiJi',
+      docs: 'https://github.com/PelerYuan/HaoCiKuaiJi/blob/master/README.md',
     },
     image: 'haocikuaiji',
     imageAlt: 'HaoCiKuaiJi vocabulary learning system screenshot',
@@ -70,6 +70,33 @@ export const FEATURED_PROJECTS = [
       { file: '12', caption: 'Shop Interaction' },
       { file: '17', caption: 'Weapon System' },
     ],
+  },
+];
+
+export const AI_PROJECTS = [
+  {
+    id: 'mindbloom',
+    title: 'MindBloom — AI-Powered Mind Mapping System',
+    bullets: [
+      'Unlike conventional AI mind mapping tools that rely on summarization to generate complete maps upfront, MindBloom adopts a fundamentally different approach by avoiding automatic full-map construction, ensuring that users remain actively engaged in the thinking process rather than passively consuming generated structures',
+      'MindBloom is designed to guide users through a step-by-step cognitive expansion process, encouraging deeper exploration of ideas and enabling more structured, intentional development of thoughts as the map evolves organically',
+      'When a user inputs content into a node, a large language model dynamically performs semantic association and hierarchical decomposition, helping to surface related concepts, break down complex ideas, and suggest meaningful directions for further exploration',
+    ],
+    tags: ['LLM', 'React', 'Mind Mapping', 'AI'],
+    accentColor: '#f472b6',
+    status: 'in-developing',
+    media: 'video',
+    links: {},
+  },
+  {
+    id: 'llm-router',
+    title: 'LLM Router',
+    description: `With the rise of AI agent frameworks such as OpenClaw, the demand for LLM tokens has been increasing rapidly. However, due to differences in task complexity, some tasks require more powerful and expensive models for extended reasoning, while others can be efficiently handled by lightweight and cost-effective models. Dynamically selecting the appropriate model to optimize cost has therefore become a key challenge.\n\nTo address this, LLM Router leverages a locally deployed lightweight model for fast task classification, routing each request to the most suitable model. This approach significantly reduces token consumption while fully utilizing local computational resources.`,
+    tags: ['LLM', 'Python', 'Model Routing', 'Optimization'],
+    accentColor: '#f59e0b',
+    status: 'in-developing',
+    media: 'svg',
+    links: {},
   },
 ];
 

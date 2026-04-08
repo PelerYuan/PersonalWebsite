@@ -16,7 +16,7 @@ export const ROLES = [
     id: 'software-architect',
     label: "Software Architect",
     description:
-      "Designing scalable systems with clean abstractions — from microservice topologies to developer tooling and APIs that teams actually love to use.",
+      "End-to-end systems, thoughtful architecture, collaborative development, and ideas that drive real impact.",
     sectionId: 'software',
     sectionLabel: 'View Projects',
     accentColor: '#a78bfa',
@@ -25,7 +25,7 @@ export const ROLES = [
     id: 'hardware-engineer',
     label: "Hardware Engineer",
     description:
-      "Crafting PCBs, embedded firmware, and silicon-level solutions where bits meet atoms and every milliwatt and millisecond counts.",
+      "Where software meets physics. PCB design, embedded firmware, and systems where every microsecond and milliwatt has a cost.",
     sectionId: 'hardware',
     sectionLabel: 'View Hardware',
     accentColor: '#f59e0b',
@@ -34,7 +34,7 @@ export const ROLES = [
     id: 'server-ops',
     label: "Server O&M",
     description:
-      "Managing infrastructure with an uptime obsession — container orchestration, CI/CD pipelines, monitoring stacks, and incident response that prevents 3am pages.",
+      "From planning to production. architected, built, deployed, and maintained systems with reliability in mind.",
     sectionId: 'server-ops',
     sectionLabel: 'View Infrastructure',
     accentColor: '#00ff88',
@@ -43,7 +43,7 @@ export const ROLES = [
     id: 'technical-writer',
     label: "Technical Writer",
     description:
-      "Translating complex systems into clear documentation, guides, and articles that reduce cognitive load for the next engineer who picks up the work.",
+      "Turning complex ideas into clear, accessible explanations.",
     sectionId: 'writing',
     sectionLabel: 'Read Articles',
     accentColor: '#f472b6',

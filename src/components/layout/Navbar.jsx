@@ -51,7 +51,7 @@ export default function Navbar() {
           aria-label="Back to top"
         >
           <span className="font-mono text-accent-DEFAULT text-glow font-bold tracking-widest text-sm select-none">
-            page.<span className="text-text-primary">peler</span><span className="text-text-muted">.top</span>
+            dev.<span className="text-text-primary">peler</span><span className="text-text-muted">.top</span>
           </span>
         </button>
 
