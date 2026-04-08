@@ -4,14 +4,10 @@ import Lenis from 'lenis';
 
 export function useLenis() {
   const lenisRef = useRef(null);
-  const initializedRef = useRef(false);
 
   useEffect(() => {
-    // Guard against StrictMode double-invocation
-    if (initializedRef.current) return;
-    initializedRef.current = true;
-
     const lenis = new Lenis({
+      autoRaf: true,
       duration: 1.2,
       easing: (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
@@ -25,18 +21,9 @@ export function useLenis() {
     lenisRef.current = lenis;
     window.__lenis = lenis;
 
-    let rafId;
-    function raf(time) {
-      lenis.raf(time);
-      rafId = requestAnimationFrame(raf);
-    }
-    rafId = requestAnimationFrame(raf);
-
     return () => {
-      cancelAnimationFrame(rafId);
       lenis.destroy();
       window.__lenis = null;
-      initializedRef.current = false;
     };
   }, []);
 
