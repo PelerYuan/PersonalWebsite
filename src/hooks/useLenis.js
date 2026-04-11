@@ -21,7 +21,12 @@ export function useLenis() {
     lenisRef.current = lenis;
     window.__lenis = lenis;
 
+    // Recalculate scroll limit when page height changes (e.g. images loading)
+    const ro = new ResizeObserver(() => lenis.resize());
+    ro.observe(document.documentElement);
+
     return () => {
+      ro.disconnect();
       lenis.destroy();
       window.__lenis = null;
     };
