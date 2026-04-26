@@ -16,11 +16,9 @@
     background-color: var(--bg-base);
     color: #e8e8f0;
     font-family: 'Inter', system-ui, sans-serif;
-    height: 100%;
   }
 
   body {
-    height: 100%;
     overflow-x: hidden;
   }
 

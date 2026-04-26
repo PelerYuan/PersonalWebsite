@@ -22,10 +22,17 @@ export function useLenis() {
     window.__lenis = lenis;
 
     // Recalculate scroll limit when page height changes (e.g. images loading)
-    const ro = new ResizeObserver(() => lenis.resize());
+    // Debounced to prevent rapid lenis.resize() calls during reflow from
+    // interrupting Lenis's internal scroll state (causes scroll freeze).
+    let resizeTimer;
+    const ro = new ResizeObserver(() => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => lenis.resize(), 150);
+    });
     ro.observe(document.documentElement);
 
     return () => {
+      clearTimeout(resizeTimer);
       ro.disconnect();
       lenis.destroy();
       window.__lenis = null;
