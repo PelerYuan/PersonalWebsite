@@ -1,9 +1,6 @@
 // src/components/sections/TechnicalWriter.jsx
-import { ExternalLink, Clock, Calendar } from 'lucide-react';
-import { motion } from 'framer-motion';
-import ScrollReveal, { REVEAL_VARIANTS } from '../ui/ScrollReveal';
-import SectionCard from '../ui/SectionCard';
-import { ARTICLES } from '../../data/writing';
+import { ExternalLink } from 'lucide-react';
+import ScrollReveal from '../ui/ScrollReveal';
 
 const ACCENT = '#f472b6';
 
@@ -113,55 +110,6 @@ function FeaturedBook() {
   );
 }
 
-function ArticleCard({ article }) {
-  const formatDate = (dateStr) => {
-    const d = new Date(dateStr);
-    return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
-  };
-
-  return (
-    <SectionCard glowColor={article.accentColor} className="flex flex-col h-full">
-      <h3
-        className="font-mono font-semibold text-text-primary text-base leading-snug mb-3"
-        style={{ textShadow: `0 0 20px ${article.accentColor}40` }}
-      >
-        {article.title}
-      </h3>
-
-      <p className="text-text-secondary text-sm leading-relaxed flex-1 mb-4">
-        {article.excerpt}
-      </p>
-
-      <div className="flex flex-wrap gap-1.5 mb-4">
-        {article.tags.map((tag) => (
-          <span
-            key={tag}
-            className="px-2 py-0.5 rounded text-[10px] font-mono font-medium"
-            style={{
-              color: article.accentColor,
-              background: `${article.accentColor}18`,
-              border: `1px solid ${article.accentColor}50`,
-            }}
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
-
-      <div className="flex items-center gap-4 text-text-muted text-[11px] font-mono">
-        <span className="flex items-center gap-1.5">
-          <Calendar size={11} style={{ color: article.accentColor, opacity: 0.6 }} />
-          {formatDate(article.date)}
-        </span>
-        <span className="flex items-center gap-1.5">
-          <Clock size={11} style={{ color: article.accentColor, opacity: 0.6 }} />
-          {article.readTime}
-        </span>
-      </div>
-    </SectionCard>
-  );
-}
-
 export default function TechnicalWriter() {
   return (
     <section id="writing" className="section-bg border-t border-base-border/30">
@@ -173,28 +121,6 @@ export default function TechnicalWriter() {
         />
 
         <FeaturedBook />
-
-        <div className="border-t border-base-border/30 my-16" />
-
-        <ScrollReveal variant="up">
-          <div className="mb-8">
-            <span className="label-mono" style={{ color: ACCENT }}>— Articles</span>
-          </div>
-        </ScrollReveal>
-
-        <motion.div
-          variants={REVEAL_VARIANTS.stagger}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-80px' }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6"
-        >
-          {ARTICLES.map((article) => (
-            <motion.div key={article.id} variants={REVEAL_VARIANTS.scale}>
-              <ArticleCard article={article} />
-            </motion.div>
-          ))}
-        </motion.div>
       </div>
     </section>
   );
