@@ -1619,6 +1619,15 @@ img {
 /* =========================================================
    Videos — each competition is a wide row: video cover + short text
    ========================================================= */
+/* One line of context above the two videos: same voice as the other prose paragraphs */
+.vlist__intro {
+  max-width: 78ch;
+  margin: -24px 0 56px;
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
 .vlist {
   display: grid;
   gap: 48px;
@@ -1626,9 +1635,9 @@ img {
 
 .vrow {
   display: grid;
-  grid-template-columns: minmax(0, 330px) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 460px) minmax(0, 1fr);
   align-items: center;
-  gap: 44px;
+  gap: 64px;
 }
 
 .vrow__thumb {
@@ -1698,7 +1707,7 @@ img {
 }
 
 .vrow__body {
-  max-width: 460px;
+  max-width: 520px;
 }
 
 .vrow__kicker {
@@ -1722,7 +1731,9 @@ img {
 .vrow__desc {
   margin: 12px 0 0;
   color: var(--text-muted);
-  line-height: 1.55;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  text-wrap: pretty;
 }
 
 .vrow__link {
