@@ -73,46 +73,49 @@
             <span class="prompt">~/peler $</span> whoami<span class="cursor" aria-hidden="true"></span>
           </p>
 
-          <h1 class="hero__title reveal" style="--d: 1">
-            Hi, I'm <span class="hero__name">Peler Yuan</span>
+          <!-- The name is the headline; script splits it into letters that rise towards the pointer -->
+          <h1 class="hero__title reveal" style="--d: 1" aria-label="Peler Yuan">
+            <span class="hero__name" id="heroName" aria-hidden="true">Peler Yuan</span>
           </h1>
 
           <p class="hero__aka reveal" style="--d: 2">
             also known as <strong>Xingjian</strong>
           </p>
 
-          <!-- The identity: big, centred, swapped by script -->
-          <div class="role reveal" style="--d: 3">
-            <span class="role__index" aria-hidden="true">I'm a</span>
-            <div class="role__stage" id="roleStage" aria-hidden="true"></div>
-            <p class="sr-only">Student, Software Architect, Hardware Engineer, Server O&amp;M, Technical Writer.</p>
-          </div>
+          <div class="hero__lower">
+            <div class="hero__id">
+              <!-- The identity: swapped by script -->
+              <div class="role reveal" style="--d: 3">
+                <span class="role__index" aria-hidden="true">I'm a</span>
+                <div class="role__stage" id="roleStage" aria-hidden="true"></div>
+                <p class="sr-only">Student, Software Architect, Hardware Engineer, Server O&amp;M, Technical Writer.</p>
+              </div>
 
-          <p class="role__line reveal" style="--d: 4" id="roleLine" aria-hidden="true"></p>
+              <p class="role__line reveal" style="--d: 4" id="roleLine" aria-hidden="true"></p>
+            </div>
 
-          <!-- One bar per identity, labelled with its verb (built by script) -->
-          <div class="progress reveal" style="--d: 5" id="progress" role="tablist" aria-label="Identities"></div>
+            <!-- Controls: pick an identity, or jump to its section -->
+            <div class="hero__controls">
+              <!-- One bar per identity, labelled with its verb (built by script) -->
+              <div class="progress reveal" style="--d: 5" id="progress" role="tablist" aria-label="Identities"></div>
 
-          <!-- Jump to the current identity's section (updated by JS on every switch) -->
-          <div class="reveal" style="--d: 6">
-            <a class="jump" id="jump" href="#student">
-              <span class="jump__ring" aria-hidden="true">
-                <svg class="jump__arrow" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M18 13l-6 6-6-6"/></svg>
-                <svg class="jump__wait" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><circle cx="6" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="18" cy="12" r="1.6"/></svg>
-              </span>
-              <span class="jump__text" id="jumpText">
-                <span class="jump__kicker" id="jumpKicker">Jump to · 01</span>
-                <span class="jump__title"><span id="jumpTitle">Education &amp; Personal Learning</span></span>
-              </span>
-            </a>
+              <!-- Jump to the current identity's section (updated by JS on every switch) -->
+              <div class="reveal" style="--d: 6">
+                <a class="jump" id="jump" href="#student">
+                  <span class="jump__ring" aria-hidden="true">
+                    <svg class="jump__arrow" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M18 13l-6 6-6-6"/></svg>
+                    <svg class="jump__wait" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><circle cx="6" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="18" cy="12" r="1.6"/></svg>
+                  </span>
+                  <span class="jump__text" id="jumpText">
+                    <span class="jump__kicker" id="jumpKicker">Jump to · 01</span>
+                    <span class="jump__title"><span id="jumpTitle">Education &amp; Personal Learning</span></span>
+                  </span>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
-      <a href="#student" class="scroll-cue reveal" style="--d: 5" aria-label="Scroll down">
-        <span>Scroll</span>
-        <span class="scroll-cue__line"></span>
-      </a>
     </section>
 
     <!-- ============ 01 · Student ============ -->

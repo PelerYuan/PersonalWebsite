@@ -331,17 +331,18 @@ img {
 
 /* ---------- Centred text ---------- */
 .hero__text {
+  --hero-gap: clamp(52px, 9vh, 92px); /* space between the three groups: name, identity, controls */
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  align-items: flex-start;
+  text-align: left;
 }
 
 .hero__eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  margin: 0 0 28px;
+  margin: 0 0 clamp(14px, 2.4vh, 26px);
   padding: 6px 14px;
   border: 1px solid var(--line);
   border-radius: 999px;
@@ -368,26 +369,28 @@ img {
   50% { opacity: 0; }
 }
 
+/* The name is the headline: huge, left-aligned, inked from dark to the identity's colour */
 .hero__title {
-  margin: 0;
+  margin: 0 0 0 -0.045em; /* optical: the P's stem sits on the text edge */
   font-family: var(--font-display);
-  font-weight: 500;
-  font-size: clamp(1.7rem, 3.6vw, 2.9rem);
-  line-height: 1.1;
-  letter-spacing: -0.035em;
-  color: var(--text-muted);
+  font-weight: 600;
+  font-size: clamp(3.4rem, 17vw, 15.5rem);
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+  white-space: nowrap;
 }
 
-.hero__name {
-  font-weight: 600;
-  background: linear-gradient(100deg, var(--text) 30%, var(--accent) 130%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+.hero__name .l {
+  display: inline-block;
+  white-space: pre;
+  /* --b: how far along the name this letter is (0 to 100), --k: how close the pointer is (0 to 1) */
+  color: color-mix(in srgb, var(--accent) calc((var(--b, 0) * 0.6 + (100 - var(--b, 0) * 0.6) * var(--k, 0)) * 1%), var(--text));
+  transform: translate3d(0, calc(var(--k, 0) * -0.05em), 0);
+  will-change: transform;
 }
 
 .hero__aka {
-  margin: 12px 0 0;
+  margin: clamp(12px, 2vh, 22px) 0 0;
   font-size: clamp(0.98rem, 1.4vw, 1.1rem);
   color: var(--text-muted);
 }
@@ -398,13 +401,26 @@ img {
 }
 
 /* ---------- Rotating role ---------- */
+/* Lower row: who I am right now on the left, the controls on the right */
+.hero__lower {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 460px);
+  align-items: end;
+  gap: 24px 64px;
+  width: 100%;
+  margin-top: var(--hero-gap);
+}
+
+.hero__id {
+  min-width: 0;
+}
+
 .role {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 14px;
+  align-items: flex-start;
+  gap: 0;
   width: 100%;
-  margin-top: clamp(40px, 7vh, 72px);
 }
 
 .role__index {
@@ -421,7 +437,7 @@ img {
   height: 1.2em;
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(1.75rem, 8.6vw, 7.2rem);
+  font-size: clamp(2.1rem, 5.6vw, 4.6rem);
   line-height: 1.2;
   letter-spacing: -0.05em;
   color: var(--accent);
@@ -433,14 +449,14 @@ img {
   right: 0;
   top: 0;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   white-space: nowrap;
   overflow: hidden;
   padding-bottom: 0.08em; /* keep descenders unclipped */
 }
 
 .role__line {
-  margin: 10px 0 0;
+  margin: 4px 0 0;
   font-size: clamp(1.05rem, 1.7vw, 1.3rem);
   color: var(--text-muted);
   transition: opacity 0.25s, transform 0.4s var(--ease-out);
@@ -476,13 +492,35 @@ img {
   transition-delay: calc(var(--i) * 14ms);
 }
 
+@media (max-width: 1080px) {
+  .hero__title {
+    font-size: 21vw; /* fills the narrower column; the name stays the headline */
+  }
+
+  .hero__lower {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 44px;
+  }
+}
+
 /* ---------- Progress indicators: one bar per identity, labelled with its verb ---------- */
 .progress {
   display: flex;
   gap: 10px;
   width: 100%;
-  max-width: 600px;
-  margin-top: clamp(36px, 6vh, 56px);
+}
+
+/* Bars and the jump button read as one group */
+.hero__controls {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 26px;
+  width: 100%;
+}
+
+.hero__controls .jump {
+  margin-top: 0;
 }
 
 .progress__item {
@@ -722,47 +760,6 @@ img {
   color: var(--text-muted);
 }
 
-/* ---------- Scroll cue ---------- */
-.scroll-cue {
-  position: absolute;
-  left: 50%;
-  bottom: 28px;
-  translate: -50% 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--text-faint);
-}
-
-.scroll-cue__line {
-  position: relative;
-  width: 1px;
-  height: 40px;
-  background: var(--line);
-  overflow: hidden;
-}
-
-.scroll-cue__line::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 40%;
-  background: var(--accent);
-  animation: drip 2s var(--ease-in-out) infinite;
-}
-
-@keyframes drip {
-  from { transform: translateY(-100%); }
-  to { transform: translateY(250%); }
-}
-
 /* ---------- Entrance animation ---------- */
 .reveal {
   opacity: 0;
@@ -775,14 +772,6 @@ img {
 
 .is-loaded .reveal {
   opacity: 1;
-  transform: none;
-}
-
-.scroll-cue.reveal {
-  transform: translateY(12px);
-}
-
-.is-loaded .scroll-cue.reveal {
   transform: none;
 }
 
@@ -4240,10 +4229,6 @@ h3 {
     padding: 104px 0 88px;
   }
 
-  .role {
-    gap: 10px;
-  }
-
   .progress {
     gap: 6px;
   }
@@ -4251,10 +4236,6 @@ h3 {
   .progress__label {
     font-size: 0.62rem;
     letter-spacing: 0;
-  }
-
-  .scroll-cue {
-    display: none;
   }
 
   .section {
@@ -4424,9 +4405,12 @@ h3 {
   }
 
   .aurora__blob,
-  .cursor,
-  .scroll-cue__line::after {
+  .cursor {
     animation: none;
+  }
+
+  .hero__name .l {
+    transform: none;
   }
 
   .char,

@@ -172,6 +172,87 @@ const accentObserver = new IntersectionObserver(
 );
 [hero, ...sections].forEach((el) => accentObserver.observe(el));
 
+/* ---------- Hero name: letters lean towards the pointer and take on the identity's colour ---------- */
+{
+  const name = document.getElementById('heroName');
+  if (name) {
+    const text = name.textContent;
+    name.textContent = '';
+    const letters = [...text].map((ch, i, all) => {
+      const l = document.createElement('span');
+      l.className = 'l';
+      l.style.setProperty('--b', ((i / (all.length - 1)) * 100).toFixed(1));
+      l.textContent = ch;
+      name.append(l);
+      return { el: l, k: 0, target: 0, solid: ch !== ' ' };
+    });
+
+    if (!reduceMotion) {
+      let raf = 0;
+      let pointer = null;
+
+      const aim = () => {
+        for (const L of letters) {
+          if (!L.solid) continue;
+          if (!pointer) {
+            L.target = 0;
+            continue;
+          }
+          const r = L.el.getBoundingClientRect();
+          const reach = r.height * 1.05;
+          const d = Math.hypot(pointer.x - (r.left + r.width / 2), pointer.y - (r.top + r.height / 2));
+          L.target = Math.max(0, 1 - d / reach) ** 1.6;
+        }
+      };
+
+      const tick = () => {
+        raf = 0;
+        let moving = false;
+        for (const L of letters) {
+          if (!L.solid) continue;
+          // quick to rise, slow to settle
+          const rate = L.target > L.k ? 0.22 : 0.07;
+          L.k += (L.target - L.k) * rate;
+          if (Math.abs(L.target - L.k) < 0.004) L.k = L.target;
+          else moving = true;
+          L.el.style.setProperty('--k', L.k.toFixed(3));
+        }
+        if (moving) raf = requestAnimationFrame(tick);
+      };
+
+      const kick = () => {
+        aim();
+        if (!raf) raf = requestAnimationFrame(tick);
+      };
+
+      document.addEventListener(
+        'pointermove',
+        (e) => {
+          if (e.pointerType === 'touch') return;
+          const r = hero.getBoundingClientRect();
+          pointer = e.clientY >= r.top && e.clientY <= r.bottom ? { x: e.clientX, y: e.clientY } : null;
+          kick();
+        },
+        { passive: true }
+      );
+      document.documentElement.addEventListener('pointerleave', () => {
+        pointer = null;
+        kick();
+      });
+      // a tap lifts the whole name for a moment
+      hero.addEventListener('pointerdown', (e) => {
+        if (e.pointerType !== 'touch') return;
+        for (const L of letters) L.target = L.solid ? 1 : 0;
+        if (!raf) raf = requestAnimationFrame(tick);
+        setTimeout(() => {
+          for (const L of letters) L.target = 0;
+          if (!raf) raf = requestAnimationFrame(tick);
+        }, 500);
+      });
+    }
+  }
+}
+
 /* ---------- Hero ink: the pointer leaves a soft wake of colour that fades away ---------- */
 {
   const canvas = hero.querySelector('.hero__ink');
