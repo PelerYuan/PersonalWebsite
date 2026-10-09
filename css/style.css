@@ -783,6 +783,7 @@ img {
 .section {
   position: relative;
   isolation: isolate;
+  overflow-x: clip; /* the headline aura reaches past the container; it must never widen the page */
   padding: 140px 0;
   border-top: 1px solid var(--line);
 }
